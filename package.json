@@ -2,9 +2,16 @@
   "name": "js-mastermind",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "directories": {
+    "src": "src",
+    "test": "test"
+  },
   "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "jest": "^28.1.0"
-  }
+  },
+  "devDependencies": {}
 }
