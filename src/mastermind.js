@@ -38,3 +38,5 @@ const print_violet = (s) => {
 const mastermind = () => {
   // Implement the game loop here
 };
+
+export { mastermind };
