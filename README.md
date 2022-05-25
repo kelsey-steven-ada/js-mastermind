@@ -210,7 +210,7 @@ Welcome to Mastermind!
 
 The game loop should then generate a new code to guess and give the user directions on how to play the game.
 
-#### Example Insturctions
+#### Example Instructions
 ```
 Generating a new code...
 New code generated: ****
