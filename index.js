@@ -8,7 +8,7 @@ while (user_input !== "p" && user_input !== "t") {
 
   if (user_input === "p") {
     mastermind();
-  } else {
+  } else if (user_input === "t") {
     jest.run();
   }
 }
