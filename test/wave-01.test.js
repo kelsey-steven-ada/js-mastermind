@@ -1,7 +1,7 @@
 import { generate_code } from "../src/game.js";
 
 describe("Test generate_code function", () => {
-  test("Code length is 4", () => {
+  test("Creates a code of length 4", () => {
     // Arrange / Act
     const result = generate_code();
 

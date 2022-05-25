@@ -1,5 +1,7 @@
 import { validate_guess, check_win_or_lose } from "../src/game.js";
 
+// --------------------------test validate_guess------------------------------------
+
 describe("Test validate_guess function", () => {
   test("Returns false if length greater than 4", () => {
     // Arrange
@@ -56,6 +58,8 @@ describe("Test validate_guess function", () => {
     expect(result).toEqual(true);
   });
 });
+
+// --------------------------test check_win_or_lose------------------------------------
 
 describe("Test check_win_or_lose function", () => {
   test("Returns true if both win conditions met", () => {
