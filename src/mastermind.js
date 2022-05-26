@@ -2,8 +2,6 @@ import * as readline from "node:readline";
 import {
   generateCode,
   validateGuess,
-  colorCount,
-  correctPosAndColor,
   checkGuess,
   checkWinOrLose,
   getWinPercentage,

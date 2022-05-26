@@ -18,7 +18,7 @@ const checkGuess = (guess, code) => {
   // Add your code here
 };
 
-const checkWinOrLose = (guess, code, num_guesses) => {
+const checkWinOrLose = (guess, code, numGuesses) => {
   // Add your code here
 };
 
@@ -26,7 +26,7 @@ const getWinPercentage = (wins, plays) => {
   // Add your code here
 };
 
-const formatGuessStats = (guess_stats) => {
+const formatGuessStats = (guessStats) => {
   // Add your code here
 };
 

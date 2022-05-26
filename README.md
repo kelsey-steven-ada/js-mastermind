@@ -162,7 +162,7 @@ To aid us in this, implement `getWinPercentage` which has the following properti
 
 Next, implement the `formatGuessStats` function which has the following properties:
 - Has one parameter:
-    - `guess_stats`, a dictionary where `guess_stats[i]` is the number of rounds the user has won in _i_ guesses
+    - `guessStats`, a dictionary where `guessStats[i]` is the number of rounds the user has won in _i_ guesses
 - Returns a list of length 8
     - Element at index `i` of the list is a string of length _n_, where _n_ is the number of rounds won in `i+1` guesses
     - If _n_ is 0, the string should be empty
@@ -170,7 +170,7 @@ Next, implement the `formatGuessStats` function which has the following properti
 
 #### Examples
 
-|guess_stats | Output|
+|guessStats | Output|
 |:----------:|:-----:|
 |{1: 1, 3:4, 5:1 }|['X', '', 'XXXX', '', 'X', '','','']| 
 |{}               |['','','','','','','','']           |
@@ -182,8 +182,8 @@ Using the functions built in previous waves, complete the `mastermind` function.
 The `mastermind` function should implement a game loop. As part of your game loop, you will need to track the following data:
 - `plays`, an integer representing the total number of rounds played
 - `wins`, an integer representing the total number of rounds won
-- `guess_stats`, a dictionary representing the number of rounds won in _n_ guesses 
-    - Only rounds where the player won the game (total number of guesses was less than or equal to 8) are added to `guess_stats`
+- `guessStats`, a dictionary representing the number of rounds won in _n_ guesses 
+    - Only rounds where the player won the game (total number of guesses was less than or equal to 8) are added to `guessStats`
 - `guesses`, an integer representing the number of guesses the user has made in the current round
 
 Your game loop does not need to match the example output we provide below word for word, however it should contain these basic components:

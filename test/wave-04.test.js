@@ -69,10 +69,10 @@ describe("Test getWinPercentage function", () => {
 describe("Test formatGuessStats function", () => {
   test("Format stats when there have been no games", () => {
     // Arrange
-    const guess_stats = {};
+    const guessStats = {};
 
     // Act
-    const result = formatGuessStats(guess_stats);
+    const result = formatGuessStats(guessStats);
 
     // Assert
     expect(result.length).toBe(8);
@@ -83,10 +83,10 @@ describe("Test formatGuessStats function", () => {
 
   test("Properly formats stats for a single pair", () => {
     // Arrange
-    const guess_stats = { 1: 4 };
+    const guessStats = { 1: 4 };
 
     // Act
-    const result = formatGuessStats(guess_stats);
+    const result = formatGuessStats(guessStats);
 
     // Assert
     expect(result.length).toBe(8);
@@ -105,7 +105,7 @@ describe("Test formatGuessStats function", () => {
 
   test("Properly formats stats for all pairs", () => {
     // Arrange
-    const guess_stats = {
+    const guessStats = {
       1: 4,
       2: 3,
       3: 4,
@@ -117,7 +117,7 @@ describe("Test formatGuessStats function", () => {
     };
 
     // Act
-    const result = formatGuessStats(guess_stats);
+    const result = formatGuessStats(guessStats);
 
     // Assert
     expect(result.length).toBe(8);
