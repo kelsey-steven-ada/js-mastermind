@@ -66,10 +66,10 @@ describe("Test checkWinOrLose function", () => {
     // Arrange
     const guess = ["R", "B", "B", "V"];
     const code = ["R", "B", "B", "V"];
-    const num_guesses = 3;
+    const numGuesses = 3;
 
     // Act
-    const result = checkWinOrLose(guess, code, num_guesses);
+    const result = checkWinOrLose(guess, code, numGuesses);
 
     // Assert
     expect(result).toEqual(true);
@@ -79,10 +79,10 @@ describe("Test checkWinOrLose function", () => {
     // Arrange
     const guess = ["R", "B", "B", "V"];
     const code = ["R", "B", "B", "V"];
-    const num_guesses = 9;
+    const numGuesses = 9;
 
     // Act
-    const result = checkWinOrLose(guess, code, num_guesses);
+    const result = checkWinOrLose(guess, code, numGuesses);
 
     // Assert
     expect(result).toEqual(false);
@@ -92,10 +92,10 @@ describe("Test checkWinOrLose function", () => {
     // Arrange
     const guess = ["R", "B", "B", "V"];
     const code = ["R", "B", "B", "I"];
-    const num_guesses = 2;
+    const numGuesses = 2;
 
     // Act
-    const result = checkWinOrLose(guess, code, num_guesses);
+    const result = checkWinOrLose(guess, code, numGuesses);
 
     // Assert
     expect(result).toEqual(null);

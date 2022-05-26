@@ -74,9 +74,9 @@ Implement a function called `checkWinOrLose` in `game.js`. This function should 
 - Has three parameters:
   - `guess`, which is a list of characters representing the user's guess
   - `code`, which is a list of characters representing the code the user is attempting to guess
-  - `num_guesses`, which is an integer representing the total number of guesses the user has made in the round thus far
-- Returns `true` if the user has won the game: `guess` and `code` are the same _and_ `num_guesses` is less than or equal to 8
-- Returns `false` if the user has lost the game: if `guess` and `code` are not the same _and_ `num_guesses` is more than 8 
+  - `numGuesses`, which is an integer representing the total number of guesses the user has made in the round thus far
+- Returns `true` if the user has won the game: `guess` and `code` are the same _and_ `numGuesses` is less than or equal to 8
+- Returns `false` if the user has lost the game: if `guess` and `code` are not the same _and_ `numGuesses` is more than 8 
 - Returns `null` otherwise - the game is still in progress
 
 ### Wave 3: colorCount, correctPosAndColor, checkGuess
