@@ -7,7 +7,7 @@ const playGame = async () => {
     userInput = await askQuestion("Please enter p to play or t to test => ");
 
     if (userInput === "p") {
-      mastermind();
+      await mastermind();
     } else if (userInput === "t") {
       jest.run();
     }
