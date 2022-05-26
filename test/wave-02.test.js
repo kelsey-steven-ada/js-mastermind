@@ -1,14 +1,14 @@
-import { validate_guess, check_win_or_lose } from "../src/game.js";
+import { validateGuess, checkWinOrLose } from "../src/game.js";
 
-// --------------------------test validate_guess------------------------------------
+// --------------------------test validateGuess------------------------------------
 
-describe("Test validate_guess function", () => {
+describe("Test validateGuess function", () => {
   test("Returns false if length greater than 4", () => {
     // Arrange
     const guess = ["R", "R", "R", "R", "R"];
 
     // Act
-    const result = validate_guess(guess);
+    const result = validateGuess(guess);
 
     // Assert
     expect(result).toEqual(false);
@@ -19,7 +19,7 @@ describe("Test validate_guess function", () => {
     const guess = ["R", "Y", "G", "I"];
 
     // Act
-    const result = validate_guess(guess);
+    const result = validateGuess(guess);
 
     // Assert
     expect(result).toEqual(true);
@@ -30,7 +30,7 @@ describe("Test validate_guess function", () => {
     const guess = ["B", "B", "V", "V"];
 
     // Act
-    const result = validate_guess(guess);
+    const result = validateGuess(guess);
 
     // Assert
     expect(result).toEqual(true);
@@ -41,7 +41,7 @@ describe("Test validate_guess function", () => {
     const guess = ["R", "O", "Y", "I"];
 
     // Act
-    const result = validate_guess(guess);
+    const result = validateGuess(guess);
 
     // Assert
     expect(result).toEqual(false);
@@ -52,16 +52,16 @@ describe("Test validate_guess function", () => {
     const guess = ["B", "b", "v", "V"];
 
     // Act
-    const result = validate_guess(guess);
+    const result = validateGuess(guess);
 
     // Assert
     expect(result).toEqual(true);
   });
 });
 
-// --------------------------test check_win_or_lose------------------------------------
+// --------------------------test checkWinOrLose------------------------------------
 
-describe("Test check_win_or_lose function", () => {
+describe("Test checkWinOrLose function", () => {
   test("Returns true if both win conditions met", () => {
     // Arrange
     const guess = ["R", "B", "B", "V"];
@@ -69,7 +69,7 @@ describe("Test check_win_or_lose function", () => {
     const num_guesses = 3;
 
     // Act
-    const result = check_win_or_lose(guess, code, num_guesses);
+    const result = checkWinOrLose(guess, code, num_guesses);
 
     // Assert
     expect(result).toEqual(true);
@@ -82,20 +82,20 @@ describe("Test check_win_or_lose function", () => {
     const num_guesses = 9;
 
     // Act
-    const result = check_win_or_lose(guess, code, num_guesses);
+    const result = checkWinOrLose(guess, code, num_guesses);
 
     // Assert
     expect(result).toEqual(false);
   });
 
-  test("Returns none if game is ongoing", () => {
+  test("Returns null if game is ongoing", () => {
     // Arrange
     const guess = ["R", "B", "B", "V"];
     const code = ["R", "B", "B", "I"];
     const num_guesses = 2;
 
     // Act
-    const result = check_win_or_lose(guess, code, num_guesses);
+    const result = checkWinOrLose(guess, code, num_guesses);
 
     // Assert
     expect(result).toEqual(null);

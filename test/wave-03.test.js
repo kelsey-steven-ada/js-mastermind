@@ -1,19 +1,15 @@
-import {
-  color_count,
-  correct_pos_and_color,
-  check_guess,
-} from "../src/game.js";
+import { colorCount, correctPosAndColor, checkGuess } from "../src/game.js";
 
-// --------------------------test color_count------------------------------------
+// --------------------------test colorCount------------------------------------
 
-describe("Test color_count function", () => {
+describe("Test colorCount function", () => {
   test("Returns an integer", () => {
     // Arrange
     const guess = ["R", "R", "G", "B"];
     const code = ["R", "G", "B", "V"];
 
     // Act
-    const result = color_count(guess, code);
+    const result = colorCount(guess, code);
 
     // Assert
     expect(Number.isInteger(result)).toBe(true);
@@ -25,7 +21,7 @@ describe("Test color_count function", () => {
     const code = ["R", "I", "V", "V"];
 
     // Act
-    const result = color_count(guess, code);
+    const result = colorCount(guess, code);
 
     // Assert
     expect(result).toBe(2);
@@ -37,7 +33,7 @@ describe("Test color_count function", () => {
     const code = ["V", "V", "R", "I"];
 
     // Act
-    const result = color_count(guess, code);
+    const result = colorCount(guess, code);
 
     // Assert
     expect(result).toBe(2);
@@ -49,7 +45,7 @@ describe("Test color_count function", () => {
     const code = ["R", "V", "V", "V"];
 
     // Act
-    const result = color_count(guess, code);
+    const result = colorCount(guess, code);
 
     // Assert
     expect(result).toBe(1);
@@ -61,23 +57,23 @@ describe("Test color_count function", () => {
     const code = ["I", "I", "I", "I"];
 
     // Act
-    const result = color_count(guess, code);
+    const result = colorCount(guess, code);
 
     // Assert
     expect(result).toBe(0);
   });
 });
 
-// --------------------------test correct_pos_and_color------------------------------------
+// --------------------------test correctPosAndColor------------------------------------
 
-describe("Test correct_pos_and_color function", () => {
+describe("Test correctPosAndColor function", () => {
   test("Returns an integer", () => {
     // Arrange
     const guess = ["R", "B", "B", "B"];
     const code = ["I", "I", "I", "I"];
 
     // Act
-    const result = correct_pos_and_color(guess, code);
+    const result = correctPosAndColor(guess, code);
 
     // Assert
     expect(Number.isInteger(result)).toBe(true);
@@ -89,7 +85,7 @@ describe("Test correct_pos_and_color function", () => {
     const code = ["R", "B", "G", "G"];
 
     // Act
-    const result = correct_pos_and_color(guess, code);
+    const result = correctPosAndColor(guess, code);
 
     // Assert
     expect(result).toBe(2);
@@ -101,7 +97,7 @@ describe("Test correct_pos_and_color function", () => {
     const code = ["I", "V", "R", "B"];
 
     // Act
-    const result = correct_pos_and_color(guess, code);
+    const result = correctPosAndColor(guess, code);
 
     // Assert
     expect(result).toBe(0);
@@ -113,7 +109,7 @@ describe("Test correct_pos_and_color function", () => {
     const code = ["R", "V", "V", "V"];
 
     // Act
-    const result = correct_pos_and_color(guess, code);
+    const result = correctPosAndColor(guess, code);
 
     // Assert
     expect(result).toBe(1);
@@ -125,23 +121,23 @@ describe("Test correct_pos_and_color function", () => {
     const code = ["I", "I", "I", "I"];
 
     // Act
-    const result = correct_pos_and_color(guess, code);
+    const result = correctPosAndColor(guess, code);
 
     // Assert
     expect(result).toBe(0);
   });
 });
 
-// --------------------------test check_guess------------------------------------
+// --------------------------test checkGuess------------------------------------
 
-describe("Test check_guess function", () => {
+describe("Test checkGuess function", () => {
   test("Returns the values 4 & 0 for a fully correct guess", () => {
     // Arrange
     const guess = ["R", "B", "V", "V"];
     const code = ["R", "B", "V", "V"];
 
     // Act
-    const result = check_guess(guess, code);
+    const result = checkGuess(guess, code);
 
     // Assert
     expect(result).toBe([4, 0]);
@@ -153,7 +149,7 @@ describe("Test check_guess function", () => {
     const code = ["R", "Y", "B", "V"];
 
     // Act
-    const result = check_guess(guess, code);
+    const result = checkGuess(guess, code);
 
     // Assert
     expect(result).toBe([2, 1]);
@@ -165,7 +161,7 @@ describe("Test check_guess function", () => {
     const code = ["R", "R", "R", "R"];
 
     // Act
-    const result = check_guess(guess, code);
+    const result = checkGuess(guess, code);
 
     // Assert
     expect(result).toBe([0, 0]);

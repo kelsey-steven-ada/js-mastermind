@@ -1,42 +1,42 @@
-const generate_code = () => {
+const generateCode = () => {
   // Add your code here
 };
 
-const validate_guess = (guess) => {
+const validateGuess = (guess) => {
   // Add your code here
 };
 
-const color_count = (guess, code) => {
+const colorCount = (guess, code) => {
   // Add your code here
 };
 
-const correct_pos_and_color = (guess, code) => {
+const correctPosAndColor = (guess, code) => {
   // Add your code here
 };
 
-const check_guess = (guess, code) => {
+const checkGuess = (guess, code) => {
   // Add your code here
 };
 
-const check_win_or_lose = (guess, code, num_guesses) => {
+const checkWinOrLose = (guess, code, num_guesses) => {
   // Add your code here
 };
 
-const get_win_percentage = (wins, plays) => {
+const getWinPercentage = (wins, plays) => {
   // Add your code here
 };
 
-const format_guess_stats = (guess_stats) => {
+const formatGuessStats = (guess_stats) => {
   // Add your code here
 };
 
 export {
-  generate_code,
-  validate_guess,
-  color_count,
-  correct_pos_and_color,
-  check_guess,
-  check_win_or_lose,
-  get_win_percentage,
-  format_guess_stats,
+  generateCode,
+  validateGuess,
+  colorCount,
+  correctPosAndColor,
+  checkGuess,
+  checkWinOrLose,
+  getWinPercentage,
+  formatGuessStats,
 };

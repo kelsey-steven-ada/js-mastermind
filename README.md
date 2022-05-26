@@ -36,16 +36,16 @@ Go through the waves one-by-one and build the features of this game. You will us
 Take time to read through the Wave 1 implementation requirements and the tests for Wave 1. Write down your questions, and spend some time going through your understanding of the requirements and tests. Make sure you can run the tests and see them fail.
 
 ### Wave 1: Game Setup
-The first step in setting up a new game is to generate a code of 4 colors (represented as letters) for the user to guess. To do so, implement the function `generate_code` in `game.js`. This function should have the following properties:
+The first step in setting up a new game is to generate a code of 4 colors (represented as letters) for the user to guess. To do so, implement the function `generateCode` in `game.js`. This function should have the following properties:
 
 - No parameters
 - Returns a list of length 4
 - Each element in the list should be any of the following letters: R, Y, G, B, I, V
 
-### Wave 2: validate_guess and check_win_or_lose
+### Wave 2: validateGuess and checkWinOrLose
 Next, you need a way to check if a user's guess is of the correct length and only uses valid letters.
 
-To do so, implement the function called `validate_guess` in `game.js`. This function should have the following properties:
+To do so, implement the function called `validateGuess` in `game.js`. This function should have the following properties:
 
 - Has one parameter
   - `guess` describes some input list
@@ -54,7 +54,7 @@ To do so, implement the function called `validate_guess` in `game.js`. This func
   - if every element in `guess` one of the following letters: R, Y, G, B, I, V
   - the length of `guess` is 4 (the length of the generated code)
 - Returns `False` if not; if there is a letter in `input` that is not R, Y, G, B, I, or V or the length of `input` is not 4
-- `validate_guess` should be case insensitive
+- `validateGuess` should be case insensitive
   - `input = ['R','Y','G','B']` should return `True`
   - `input = '['r','y','g','b']` should return `True`
 
@@ -70,28 +70,28 @@ To do so, implement the function called `validate_guess` in `game.js`. This func
 
 Once a user has entered their guess, we need a method to check whether or not the round has been won.
 
-Implement a function called `check_win_or_lose` in `game.js`. This function should have the following properties:
+Implement a function called `checkWinOrLose` in `game.js`. This function should have the following properties:
 - Has three parameters:
   - `guess`, which is a list of characters representing the user's guess
   - `code`, which is a list of characters representing the code the user is attempting to guess
   - `num_guesses`, which is an integer representing the total number of guesses the user has made in the round thus far
 - Returns `True` if the user has won the game: `guess` and `code` are the same _and_ `num_guesses` is less than or equal to 8
 - Returns `False` if the user has lost the game: if `guess` and `code` are not the same _and_ `num_guesses` is more than 8 
-- Returns `None` otherwise - the game is still in progress
+- Returns `null` otherwise - the game is still in progress
 
-### Wave 3: color_count, correct_pos_and_color, check_guess
+### Wave 3: colorCount, correctPosAndColor, checkGuess
 Now you need to provide feedback to the user about their guess as defined by the Mastermind game. The ultimate goal is to provide the user with two numbers:
 1. The number of pegs that are both the correct color and in the correct position
 2. The number of pegs that are the correct color but in the wrong position
 
-To do this, you will write three functions: `color_count`, `correct_pos_and_color`, and `check_guess`.
+To do this, you will write three functions: `colorCount`, `correctPosAndColor`, and `checkGuess`.
 
-The first function to implement is `color_count` in `game.js`. This function should have the following properties:
+The first function to implement is `colorCount` in `game.js`. This function should have the following properties:
 - Has two parameters:
   - `guess`, which is a string of characters representing the user's guess
   - `code`, which is a string of characters representing the code the user is attempting to guess
 - Returns an integer representing the number of pegs that are the correct color (aka letter), **regardless of whether they are in the correct position or not**
-- If no pegs are the correct color, `color_count` returns `0`
+- If no pegs are the correct color, `colorCount` returns `0`
 - A letter that appears more times in `guess` than it appears in `code` is counted the number of times it appears in `code`
 - A letter that appears fewer times in `guess` than it appears in `code` is counted the number of times it appears in `guess`
 
@@ -107,12 +107,12 @@ The first function to implement is `color_count` in `game.js`. This function sho
 |['R','I','Y','G']  |['V','V','V','V']  | 0     |
 
 
-The second function to implement is `correct_pos_and_color` in `game.js`. This function should have the following properties:
+The second function to implement is `correctPosAndColor` in `game.js`. This function should have the following properties:
 - Has two parameters:
   - `guess`, which is a list of characters representing the user's guess
   - `code`, which is a list of characters representing the code the user is attempting to guess
   - Returns an integer representing the number of pegs in `guess` whose color (aka letter) is the same as the peg at the matching index in `code`
-  - If no pegs in `guess` match both the color and index of those in `code`, `correct_pos_and_color` returns `0`
+  - If no pegs in `guess` match both the color and index of those in `code`, `correctPosAndColor` returns `0`
 
 #### Examples
 
@@ -122,7 +122,7 @@ The second function to implement is `correct_pos_and_color` in `game.js`. This f
 |['R','I','Y','G']  |['G','Y','I','R']  | 0     |
 |['R','R','R','B']  |['R','I','B','B']  | 2     |
 
-The final function to implement is `check_guess` in `game.js`. This function should have the following properties:
+The final function to implement is `checkGuess` in `game.js`. This function should have the following properties:
 - Has two parameters:
   - `guess`, which is a list of characters representing the user's guess
   - `code`, which is a list of characters representing the code the user is attempting to guess
@@ -144,7 +144,7 @@ The final function to implement is `check_guess` in `game.js`. This function sho
 ### Wave 4: Statistics
 We also want to track statistics over multiple rounds and display those statistics at the end of each round. 
 
-To aid us in this, implement `get_win_percentage` which has the following properties:
+To aid us in this, implement `getWinPercentage` which has the following properties:
 - Has two parameters
     - `wins`, which is an integer representing the number of games the user has won
     - `plays`, which is an integer representing the total number of rounds the user has played in the session
@@ -160,7 +160,7 @@ To aid us in this, implement `get_win_percentage` which has the following proper
 |3     |4      | 75    |
 |1     |15     | 6     |
 
-Next, implement the `format_guess_stats` function which has the following properties:
+Next, implement the `formatGuessStats` function which has the following properties:
 - Has one parameter:
     - `guess_stats`, a dictionary where `guess_stats[i]` is the number of rounds the user has won in _i_ guesses
 - Returns a list of length 8

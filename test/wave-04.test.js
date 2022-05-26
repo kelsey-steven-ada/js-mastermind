@@ -1,15 +1,15 @@
-import { get_win_percentage, format_guess_stats } from "../src/game.js";
+import { getWinPercentage, formatGuessStats } from "../src/game.js";
 
-// --------------------------test get_win_percentage------------------------------------
+// --------------------------test getWinPercentage------------------------------------
 
-describe("Test get_win_percentage function", () => {
+describe("Test getWinPercentage function", () => {
   test("Returns an integer", () => {
     // Arrange
     const wins = 1;
     const plays = 15;
 
     // Act
-    const result = get_win_percentage(wins, plays);
+    const result = getWinPercentage(wins, plays);
 
     // Assert
     expect(Number.isInteger(result)).toBe(true);
@@ -21,7 +21,7 @@ describe("Test get_win_percentage function", () => {
     const plays = 0;
 
     // Act
-    const result = get_win_percentage(wins, plays);
+    const result = getWinPercentage(wins, plays);
 
     // Assert
     expect(result).toBe(0);
@@ -33,7 +33,7 @@ describe("Test get_win_percentage function", () => {
     const plays = 0;
 
     // Act
-    const result = get_win_percentage(wins, plays);
+    const result = getWinPercentage(wins, plays);
 
     // Assert
     expect(result).toBe(0);
@@ -45,7 +45,7 @@ describe("Test get_win_percentage function", () => {
     const plays = 4;
 
     // Act
-    const result = get_win_percentage(wins, plays);
+    const result = getWinPercentage(wins, plays);
 
     // Assert
     expect(result).toBe(75);
@@ -57,26 +57,26 @@ describe("Test get_win_percentage function", () => {
     const plays = 15;
 
     // Act
-    const result = get_win_percentage(wins, plays);
+    const result = getWinPercentage(wins, plays);
 
     // Assert
     expect(result).toBe(6);
   });
 });
 
-// --------------------------test format_guess_stats------------------------------------
+// --------------------------test formatGuessStats------------------------------------
 
-describe("Test format_guess_stats function", () => {
+describe("Test formatGuessStats function", () => {
   test("Format stats when there have been no games", () => {
     // Arrange
     const guess_stats = {};
 
     // Act
-    const result = format_guess_stats(guess_stats);
+    const result = formatGuessStats(guess_stats);
 
     // Assert
     expect(result.length).toBe(8);
-    for (statString of result) {
+    for (var statString of result) {
       expect(statString).toBe("");
     }
   });
@@ -86,7 +86,7 @@ describe("Test format_guess_stats function", () => {
     const guess_stats = { 1: 4 };
 
     // Act
-    const result = format_guess_stats(guess_stats);
+    const result = formatGuessStats(guess_stats);
 
     // Assert
     expect(result.length).toBe(8);
@@ -98,7 +98,7 @@ describe("Test format_guess_stats function", () => {
     expect(firstElement.length).toBe(4);
 
     const firstChar = firstElement.charAt(0);
-    for (character of firstElement) {
+    for (var character of firstElement) {
       expect(character).toBe(firstChar);
     }
   });
@@ -117,7 +117,7 @@ describe("Test format_guess_stats function", () => {
     };
 
     // Act
-    const result = format_guess_stats(guess_stats);
+    const result = formatGuessStats(guess_stats);
 
     // Assert
     expect(result.length).toBe(8);
@@ -131,8 +131,8 @@ describe("Test format_guess_stats function", () => {
     expect(result[7].length).toBe(3);
 
     const firstChar = result[0].charAt(0);
-    for (statString of result) {
-      for (character of statString) {
+    for (var statString of result) {
+      for (var character of statString) {
         expect(character).toBe(firstChar);
       }
     }

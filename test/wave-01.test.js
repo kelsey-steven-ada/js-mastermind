@@ -1,11 +1,11 @@
-import { generate_code } from "../src/game.js";
+import { generateCode } from "../src/game.js";
 
-// --------------------------test generate_code------------------------------------
+// --------------------------test generateCode------------------------------------
 
-describe("Test generate_code function", () => {
+describe("Test generateCode function", () => {
   test("Creates a code of length 4", () => {
     // Arrange / Act
-    const result = generate_code();
+    const result = generateCode();
 
     // Assert
     expect(result.length).toBe(4);
@@ -13,7 +13,7 @@ describe("Test generate_code function", () => {
 
   test("Result is an array", () => {
     // Arrange / Act
-    const result = generate_code();
+    const result = generateCode();
 
     // Assert
     expect(Array.isArray(result)).toBe(true);
@@ -24,10 +24,10 @@ describe("Test generate_code function", () => {
     const validLetters = "RYGVBI";
 
     // Act
-    const result = generate_code();
+    const result = generateCode();
 
     // Assert
-    for (letter of result) {
+    for (var letter of result) {
       expect(validLetters.includes(letter)).toBe(true);
     }
   });
