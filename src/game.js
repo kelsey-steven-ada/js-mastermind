@@ -1,9 +1,35 @@
+const COLORS = ["R", "Y", "G", "B", "I", "V"];
+
+
 const generateCode = () => {
-  // Add your code here
+    const result = [];
+    
+    for (var i = 0; i < 4; i++) {
+        let index = Math.floor(Math.random() * COLORS.length);
+        result.push(COLORS[index]);
+    }
+    
+    return result;
 };
 
 const validateGuess = (guess) => {
-  // Add your code here
+    if (guess.length !== 4) {
+        return false;
+    }
+    
+    const upperGuess = getUppercasedGuess(guess);
+    const validLetters = "RYGVBI";
+    for (var letter of upperGuess) {
+        if (!validLetters.includes(letter)) {
+            return false;
+        }
+    }
+    
+    return true;
+};
+
+const getUppercasedGuess = (guess) => {
+    return guess.map((char) => char.toUpperCase());
 };
 
 const colorCount = (guess, code) => {
@@ -19,7 +45,16 @@ const checkGuess = (guess, code) => {
 };
 
 const checkWinOrLose = (guess, code, numGuesses) => {
-  // Add your code here
+    if (num_guesses >= 8) {
+        return false;
+    }
+        
+    const upperGuess = getUppercasedGuess(guess);
+    if (code.join("") === upperGuess.join("")) {
+        return true;
+    }
+        
+    return null;
 };
 
 const getWinPercentage = (wins, plays) => {
