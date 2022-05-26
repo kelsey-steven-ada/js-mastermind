@@ -8,18 +8,21 @@ import {
   formatGuessStats,
 } from "./game.js";
 
-const askQuestion = (query) => {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
+const askQuestion = (query) => {
   return new Promise((resolve) =>
     rl.question(query, (ans) => {
-      rl.close();
       resolve(ans);
     })
   );
+};
+
+const closeInputStream = () => {
+  rl.close();
 };
 
 // These functions allow you to print a string s in the stated colors.
@@ -52,4 +55,4 @@ const mastermind = async () => {
   // Implement the game loop here
 };
 
-export { mastermind, askQuestion };
+export { mastermind, askQuestion, closeInputStream };

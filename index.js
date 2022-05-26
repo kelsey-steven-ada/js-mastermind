@@ -1,5 +1,5 @@
 import jest from "jest";
-import { mastermind, askQuestion } from "./src/mastermind.js";
+import { mastermind, askQuestion, closeInputStream } from "./src/mastermind.js";
 
 const playGame = async () => {
   var userInput = "";
@@ -12,6 +12,8 @@ const playGame = async () => {
       jest.run();
     }
   }
+
+  closeInputStream();
 };
 
 playGame();
