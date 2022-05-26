@@ -49,24 +49,24 @@ To do so, implement the function called `validateGuess` in `game.js`. This funct
 
 - Has one parameter
   - `guess` describes some input list
-- Returns either `True` or `False`
-- Returns `True` 
+- Returns either `true` or `false`
+- Returns `true` 
   - if every element in `guess` one of the following letters: R, Y, G, B, I, V
   - the length of `guess` is 4 (the length of the generated code)
-- Returns `False` if not; if there is a letter in `input` that is not R, Y, G, B, I, or V or the length of `input` is not 4
+- Returns `false` if not; if there is a letter in `input` that is not R, Y, G, B, I, or V or the length of `input` is not 4
 - `validateGuess` should be case insensitive
-  - `input = ['R','Y','G','B']` should return `True`
-  - `input = '['r','y','g','b']` should return `True`
+  - `input = ['R','Y','G','B']` should return `true`
+  - `input = '['r','y','g','b']` should return `true`
 
 #### Examples
 
 |Guess                 | Output|
 |:--------------------:|:-----:|
-|['R','I','Y','G']     | True  |
-|['R','M','Y','G']     | False |
-|['R','i','Y','G']     | True  |
-|['r','i','y','g']     | True  |
-|['R','I','Y','G','B'] | False |
+|['R','I','Y','G']     | true  |
+|['R','M','Y','G']     | false |
+|['R','i','Y','G']     | true  |
+|['r','i','y','g']     | true  |
+|['R','I','Y','G','B'] | false |
 
 Once a user has entered their guess, we need a method to check whether or not the round has been won.
 
@@ -75,8 +75,8 @@ Implement a function called `checkWinOrLose` in `game.js`. This function should 
   - `guess`, which is a list of characters representing the user's guess
   - `code`, which is a list of characters representing the code the user is attempting to guess
   - `num_guesses`, which is an integer representing the total number of guesses the user has made in the round thus far
-- Returns `True` if the user has won the game: `guess` and `code` are the same _and_ `num_guesses` is less than or equal to 8
-- Returns `False` if the user has lost the game: if `guess` and `code` are not the same _and_ `num_guesses` is more than 8 
+- Returns `true` if the user has won the game: `guess` and `code` are the same _and_ `num_guesses` is less than or equal to 8
+- Returns `false` if the user has lost the game: if `guess` and `code` are not the same _and_ `num_guesses` is more than 8 
 - Returns `null` otherwise - the game is still in progress
 
 ### Wave 3: colorCount, correctPosAndColor, checkGuess
