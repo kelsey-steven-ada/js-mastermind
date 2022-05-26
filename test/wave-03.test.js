@@ -140,7 +140,7 @@ describe("Test checkGuess function", () => {
     const result = checkGuess(guess, code);
 
     // Assert
-    expect(result).toBe([4, 0]);
+    expect(result).toStrictEqual([4, 0]);
   });
 
   test("Returns correct results for a mixed success guess", () => {
@@ -152,7 +152,7 @@ describe("Test checkGuess function", () => {
     const result = checkGuess(guess, code);
 
     // Assert
-    expect(result).toBe([2, 1]);
+    expect(result).toStrictEqual([2, 1]);
   });
 
   test("Returns the values 0 & 0 for a fully incorrect guess", () => {
@@ -164,6 +164,6 @@ describe("Test checkGuess function", () => {
     const result = checkGuess(guess, code);
 
     // Assert
-    expect(result).toBe([0, 0]);
+    expect(result).toStrictEqual([0, 0]);
   });
 });
