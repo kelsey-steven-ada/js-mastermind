@@ -100,11 +100,16 @@ const checkWinOrLose = (guess, code, numGuesses) => {
 };
 
 const getWinPercentage = (wins, plays) => {
-  // Add your code here
+  return plays > 0 ? Math.floor((wins / plays) * 100) : 0;
 };
 
 const formatGuessStats = (guessStats) => {
-  // Add your code here
+  const formatted_stats = Array(8).fill("");
+  for (const [num_guesses, wins] of Object.entries(guess_stats)) {
+    formatted_stats[num_guesses - 1] = "X".repeat(wins);
+  }
+
+  return formatted_stats;
 };
 
 export {
