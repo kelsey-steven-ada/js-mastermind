@@ -52,7 +52,80 @@ const printViolet = (s) => {
 };
 
 const mastermind = async () => {
-  // Implement the game loop here
+  var plays = 0;
+  var wins = 0;
+  const guessStats = {};
+  var continuePlaying = true;
+
+  while (continuePlaying) {
+    plays += 1;
+    const userGuessCount = gameLoop();
+
+    if (userGuessCount < 9) {
+      wins += 1;
+      if (userGuessCount in guessStats) {
+        guessStats[userGuessCount] += 1;
+      } else {
+        guessStats[userGuessCount] = 1;
+      }
+    }
+
+    console.log("Game Stats:");
+    console.log(`Total Games: ${plays}`);
+    console.log(`Win percent: ${getWinPercentage(wins, plays)}`);
+    console.log("Win Distribution:");
+
+    const formattedWinStats = formatGuessStats(guessStats);
+    for (var i = 0; i < 8; i++) {
+      console.log(`${index + 1}: ${formattedWinStats[index]}`);
+    }
+    console.log("");
+
+    const playAgain = prompt("Would you like to play again? (y/n): ");
+    continuePlaying = playAgain === "y";
+  }
+};
+
+const gameLoop = () => {
+  console.log("Generating a 4-letter code...");
+  const code = generateCode();
+
+  console.log(code);
+
+  console.log("Guess the code! Each character in the code is");
+  console.log("one of the following letters: R, Y, G, B, I, V");
+  console.log("");
+
+  var numGuesses = 0;
+  while (numGuesses <= 8) {
+    numGuesses += 1;
+    const guess = getValidGuess();
+
+    if (checkWinOrLose(guess, code, numGuesses)) {
+      console.log("You won! You guessed the code 🎉");
+      return numGuesses;
+    }
+
+    const guessInfo = checkGuess(guess, code);
+    console.log(`Total colors in the correct locations: ${guessInfo[0]}`);
+    console.log(`Total correct colors in the wrong locations: ${guessInfo[1]}`);
+    console.log("");
+  }
+
+  console.log(`You ran out of guesses. The code was ${code}!`);
+  return numGuesses;
+};
+
+const getValidGuess = () => {
+  var userInput = prompt("Enter a 4 letter guess: ");
+
+  while (!validateGuess(userInput)) {
+    console.log(`The guess "${userInput}" was invalid`);
+    console.log("Please enter a new guess that is 4 letters long,");
+    userInput = prompt("using only the letters R, Y, G, B, I, and V: ");
+  }
+
+  return userInput;
 };
 
 export { mastermind, askQuestion, closeInputStream };

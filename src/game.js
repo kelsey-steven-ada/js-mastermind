@@ -33,19 +33,19 @@ const getUppercasedGuess = (guess) => {
 
 const colorCount = (guess, code) => {
   // Create frequency maps of the letters in guess and code
-  const guess_map = getFrequencyMap(guess);
-  const code_map = getFrequencyMap(code);
+  const guessMap = getFrequencyMap(guess);
+  const codeMap = getFrequencyMap(code);
 
   // For each unique letter in code, see if it exists in
   // guess; if so, increase count.
   var count = 0;
-  for (const [key, code_value] of Object.entries(code_map)) {
-    if (key in guess_map) {
-      const guess_value = guess_map[key];
-      if (guess_value > code_value) {
-        count += code_value;
+  for (const [key, codeValue] of Object.entries(codeMap)) {
+    if (key in guessMap) {
+      const guessValue = guessMap[key];
+      if (guessValue > codeValue) {
+        count += codeValue;
       } else {
-        count += guess_value;
+        count += guessValue;
       }
     }
   }
@@ -80,14 +80,14 @@ const correctPosAndColor = (guess, code) => {
 };
 
 const checkGuess = (guess, code) => {
-  const total_correct = correctPosAndColor(guess, code);
-  const wrong_position = colorCount(guess, code) - total_correct;
+  const totalCorrect = correctPosAndColor(guess, code);
+  const wrongPosition = colorCount(guess, code) - totalCorrect;
 
-  return [total_correct, wrong_position];
+  return [totalCorrect, wrongPosition];
 };
 
 const checkWinOrLose = (guess, code, numGuesses) => {
-  if (num_guesses >= 8) {
+  if (numGuesses >= 8) {
     return false;
   }
 
@@ -104,12 +104,12 @@ const getWinPercentage = (wins, plays) => {
 };
 
 const formatGuessStats = (guessStats) => {
-  const formatted_stats = Array(8).fill("");
-  for (const [num_guesses, wins] of Object.entries(guess_stats)) {
-    formatted_stats[num_guesses - 1] = "X".repeat(wins);
+  const formattedStats = Array(8).fill("");
+  for (const [numGuesses, wins] of Object.entries(guessStats)) {
+    formattedStats[numGuesses - 1] = "X".repeat(wins);
   }
 
-  return formatted_stats;
+  return formattedStats;
 };
 
 export {
