@@ -1,14 +1,13 @@
 import jest from "jest";
-import { mastermind } from "./src/mastermind.js";
+import { mastermind, askQuestion } from "./src/mastermind.js";
 
-var user_input = "";
+var userInput = "";
+while (userInput !== "p" && userInput !== "t") {
+  userInput = await askQuestion("Please enter p to play or t to test => ");
 
-while (user_input !== "p" && user_input !== "t") {
-  user_input = prompt("Please enter p to play or t to test => ");
-
-  if (user_input === "p") {
+  if (userInput === "p") {
     mastermind();
-  } else if (user_input === "t") {
+  } else if (userInput === "t") {
     jest.run();
   }
 }
