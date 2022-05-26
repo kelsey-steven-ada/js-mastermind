@@ -15,8 +15,8 @@ const rl = readline.createInterface({
 
 const askQuestion = (query) => {
   return new Promise((resolve) =>
-    rl.question(query, (ans) => {
-      resolve(ans);
+    rl.question(query, (answer) => {
+      resolve(answer);
     })
   );
 };
@@ -59,7 +59,7 @@ const mastermind = async () => {
 
   while (continuePlaying) {
     plays += 1;
-    const userGuessCount = gameLoop();
+    const userGuessCount = await gameLoop();
 
     if (userGuessCount < 9) {
       wins += 1;
@@ -77,16 +77,18 @@ const mastermind = async () => {
 
     const formattedWinStats = formatGuessStats(guessStats);
     for (var i = 0; i < 8; i++) {
-      console.log(`${index + 1}: ${formattedWinStats[index]}`);
+      console.log(`${i + 1}: ${formattedWinStats[i]}`);
     }
     console.log("");
 
-    const playAgain = prompt("Would you like to play again? (y/n): ");
+    const playAgain = await askQuestion(
+      "Would you like to play again? (y/n): "
+    );
     continuePlaying = playAgain === "y";
   }
 };
 
-const gameLoop = () => {
+const gameLoop = async () => {
   console.log("Generating a 4-letter code...");
   const code = generateCode();
 
@@ -99,7 +101,7 @@ const gameLoop = () => {
   var numGuesses = 0;
   while (numGuesses <= 8) {
     numGuesses += 1;
-    const guess = getValidGuess();
+    const guess = await getValidGuess();
 
     if (checkWinOrLose(guess, code, numGuesses)) {
       console.log("You won! You guessed the code 🎉");
@@ -116,16 +118,20 @@ const gameLoop = () => {
   return numGuesses;
 };
 
-const getValidGuess = () => {
-  var userInput = prompt("Enter a 4 letter guess: ");
-
-  while (!validateGuess(userInput)) {
+const getValidGuess = async () => {
+  var userInput = await askQuestion("Enter a 4 letter guess: ");
+  var inputAsArray = userInput.split("");
+  while (!validateGuess(inputAsArray)) {
     console.log(`The guess "${userInput}" was invalid`);
     console.log("Please enter a new guess that is 4 letters long,");
-    userInput = prompt("using only the letters R, Y, G, B, I, and V: ");
+    userInput = await askQuestion(
+      "using only the letters R, Y, G, B, I, and V: "
+    );
+
+    inputAsArray = userInput.split("");
   }
 
-  return userInput;
+  return inputAsArray;
 };
 
 export { mastermind, askQuestion, closeInputStream };
