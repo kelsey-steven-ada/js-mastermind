@@ -48,7 +48,7 @@ const printViolet = (s) => {
   return "\x1b[35m" + s + "\x1b[0m";
 };
 
-const mastermind = () => {
+const mastermind = async () => {
   // Implement the game loop here
 };
 
