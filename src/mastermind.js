@@ -1,4 +1,4 @@
-import * as readline from "node:readline";
+import promptSync from "prompt-sync"
 import {
   generateCode,
   validateGuess,
@@ -8,22 +8,7 @@ import {
   formatGuessStats,
 } from "./game.js";
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-const askQuestion = (query) => {
-  return new Promise((resolve) =>
-    rl.question(query, (answer) => {
-      resolve(answer);
-    })
-  );
-};
-
-const closeInputStream = () => {
-  rl.close();
-};
+const prompt = promptSync()
 
 // These functions allow you to print a string s in the stated colors.
 // Using them is NOT required
@@ -51,7 +36,7 @@ const printViolet = (s) => {
   return "\x1b[35m" + s + "\x1b[0m";
 };
 
-const mastermind = async () => {
+const mastermind = () => {
   var plays = 0;
   var wins = 0;
   const guessStats = {};
@@ -59,7 +44,7 @@ const mastermind = async () => {
 
   while (continuePlaying) {
     plays += 1;
-    const userGuessCount = await gameLoop();
+    const userGuessCount = gameLoop();
 
     if (userGuessCount < 9) {
       wins += 1;
@@ -81,14 +66,14 @@ const mastermind = async () => {
     }
     console.log("");
 
-    const playAgain = await askQuestion(
+    const playAgain = prompt(
       "Would you like to play again? (y/n): "
     );
     continuePlaying = playAgain === "y";
   }
 };
 
-const gameLoop = async () => {
+const gameLoop = () => {
   console.log("Generating a 4-letter code...");
   const code = generateCode();
 
@@ -101,7 +86,7 @@ const gameLoop = async () => {
   var numGuesses = 0;
   while (numGuesses <= 8) {
     numGuesses += 1;
-    const guess = await getValidGuess();
+    const guess = getValidGuess();
 
     if (checkWinOrLose(guess, code, numGuesses)) {
       console.log("You won! You guessed the code 🎉");
@@ -118,13 +103,13 @@ const gameLoop = async () => {
   return numGuesses;
 };
 
-const getValidGuess = async () => {
-  var userInput = await askQuestion("Enter a 4 letter guess: ");
+const getValidGuess = () => {
+  var userInput = prompt("Enter a 4 letter guess: ");
   var inputAsArray = userInput.split("");
   while (!validateGuess(inputAsArray)) {
     console.log(`The guess "${userInput}" was invalid`);
     console.log("Please enter a new guess that is 4 letters long,");
-    userInput = await askQuestion(
+    userInput = prompt(
       "using only the letters R, Y, G, B, I, and V: "
     );
 
@@ -134,4 +119,4 @@ const getValidGuess = async () => {
   return inputAsArray;
 };
 
-export { mastermind, askQuestion, closeInputStream };
+export { mastermind };

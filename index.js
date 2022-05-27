@@ -1,19 +1,19 @@
 import jest from "jest";
-import { mastermind, askQuestion, closeInputStream } from "./src/mastermind.js";
+import { mastermind } from "./src/mastermind.js";
+import promptSync from "prompt-sync"
 
-const playGame = async () => {
-  var userInput = "";
+const playGame = () => {
+  const prompt = promptSync();
+  let userInput = "";
   while (userInput !== "p" && userInput !== "t") {
-    userInput = await askQuestion("Please enter p to play or t to test => ");
+    userInput = prompt("Please enter p to play or t to test => ");
 
     if (userInput === "p") {
-      await mastermind();
+      mastermind();
     } else if (userInput === "t") {
       jest.run();
     }
   }
-
-  closeInputStream();
 };
 
 playGame();
